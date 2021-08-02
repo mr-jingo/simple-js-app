@@ -4,6 +4,6 @@ let pokemonList = [
   {name: "Pummeluf", height: 8, type: ["Psycho", "Grass"]}
 ];
 
-for(i = 0; 0 < pokemonList.length; i++) {
+for(i = 0; i < pokemonList.length; i++) {
   document.write(`${pokemonList.name} (height: ${pokemonList.height})`);
 }
