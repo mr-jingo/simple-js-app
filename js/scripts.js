@@ -6,10 +6,12 @@ let pokemonRepository = (function () {
   ];
 
   function add(pokemon) {
-    if(typeof pokemon === "object") {
+    let newKeys = Object.keys(pokemon).join();
+    if(typeof pokemon === "object" && newKeys === "name,height,type") {
       pokemonList.push(pokemon);
+      console.log("works");
     } else {
-      alert("Please enter Pokemon as Object");
+      alert("Please enter valid Data");
     }
   }
 
@@ -17,12 +19,20 @@ let pokemonRepository = (function () {
     return pokemonList;
   }
 
+  function filterByName(searchedName) {
+    return pokemonList.filter(item => item.name === searchedName);
+  }
+
   return {
     add: add,
-    getAll: getAll
+    getAll: getAll,
+    filterByName: filterByName
   };
 })();
 
 pokemonRepository.getAll().forEach(function(pokemon) {
   document.write(pokemon.name + " " + "(height: " + pokemon.height + ", type: " + pokemon.type + ")" + "<br>");
 })
+
+//console.log(pokemonRepository.add({name: "Glurak", height: 15, type: ["Fire", "Dragon"]}));
+//console.log(pokemonRepository.getAll());
