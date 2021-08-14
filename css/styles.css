@@ -1,3 +1,12 @@
 .list-button {
-  color: blue;
+  background-color: lightgrey;
+  text-align: center;
+  border: none;
+  width: 100px;
+  height: 50px;
+  margin: 2px;
+}
+
+ul {
+  list-style-type: none;
 }
