@@ -7,9 +7,8 @@ let pokemonRepository = (function () {
 
   function add(pokemon) {
     let newKeys = Object.keys(pokemon).join();
-    if(typeof pokemon === "object" && newKeys === "name,height,type") {
+    if(newKeys === "name,height,type") {
       pokemonList.push(pokemon);
-      console.log("works");
     } else {
       alert("Please enter valid Data");
     }
