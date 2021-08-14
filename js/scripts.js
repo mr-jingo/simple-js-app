@@ -29,8 +29,9 @@ let pokemonRepository = (function () {
   };
 })();
 
+let list = document.querySelector(".pokemon-list");
 pokemonRepository.getAll().forEach(function(pokemon) {
-  document.write(pokemon.name + " " + "(height: " + pokemon.height + ", type: " + pokemon.type + ")" + "<br>");
+  
 })
 
 //console.log(pokemonRepository.add({name: "Glurak", height: 15, type: ["Fire", "Dragon"]}));
