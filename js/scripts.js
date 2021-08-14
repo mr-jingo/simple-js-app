@@ -35,6 +35,8 @@ pokemonRepository.getAll().forEach(function(pokemon) {
   let button = document.createElement('button');
   button.innerText = pokemon.name;
   button.classList.add(".list-button");
+  listItem.appendChild(button);
+  list.appendChild(listItem);
 })
 
 //console.log(pokemonRepository.add({name: "Glurak", height: 15, type: ["Fire", "Dragon"]}));
