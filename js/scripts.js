@@ -22,21 +22,26 @@ let pokemonRepository = (function () {
     return pokemonList.filter(item => item.name === searchedName);
   }
 
+  function addListItem(pokemon) {
+    let listItem = document.createElement('li');
+    let button = document.createElement('button');
+    button.innerText = pokemon.name;
+    button.classList.add("list-button");
+    listItem.appendChild(button);
+    list.appendChild(listItem);
+  }
+
   return {
     add: add,
     getAll: getAll,
-    filterByName: filterByName
+    filterByName: filterByName,
+    addListItem: addListItem
   };
 })();
 
 let list = document.querySelector(".pokemon-list");
 pokemonRepository.getAll().forEach(function(pokemon) {
-  let listItem = document.createElement('li');
-  let button = document.createElement('button');
-  button.innerText = pokemon.name;
-  button.classList.add("list-button");
-  listItem.appendChild(button);
-  list.appendChild(listItem);
+  pokemonRepository.addListItem(pokemon);
 })
 
 //console.log(pokemonRepository.add({name: "Glurak", height: 15, type: ["Fire", "Dragon"]}));
