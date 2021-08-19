@@ -1,9 +1,6 @@
 let pokemonRepository = (function () {
-  let pokemonList = [
-    {name: "Pikachu", height: 2, type: ["Elektro", "Battle"]},
-    {name: "Bisasam", height: 10, type: ["Plant", "Water"]},
-    {name: "Pummeluf", height: 8, type: ["Psycho", "Grass"]}
-  ];
+  let pokemonList = [];
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
 
   function add(pokemon) {
     let newKeys = Object.keys(pokemon).join();
@@ -43,18 +40,35 @@ let pokemonRepository = (function () {
     });
   }
 
+  function loadList() {
+    return fetch(apiUrl).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      json.results.forEach(function (item) {
+        let pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+        };
+        add(pokemon);
+      });
+    }).catch(function (e) {
+      console.log(e);
+    })
+  }
+
+
   return {
     add: add,
     getAll: getAll,
     filterByName: filterByName,
     addListItem: addListItem,
-    showDetails: showDetails
+    showDetails: showDetails,
+    loadList: loadList
   };
 })();
 
-pokemonRepository.getAll().forEach(function(pokemon) {
-  pokemonRepository.addListItem(pokemon);
-})
-
-//console.log(pokemonRepository.add({name: "Glurak", height: 15, type: ["Fire", "Dragon"]}));
-//console.log(pokemonRepository.getAll());
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function(pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
+});
