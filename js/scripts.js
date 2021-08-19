@@ -3,8 +3,7 @@ let pokemonRepository = (function () {
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
 
   function add(pokemon) {
-    let newKeys = Object.keys(pokemon).join();
-    if(newKeys === "name,height,type") {
+    if(typeof pokemon === "object") {
       pokemonList.push(pokemon);
     } else {
       alert("Please enter valid Data");
