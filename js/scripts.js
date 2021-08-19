@@ -30,7 +30,9 @@ let pokemonRepository = (function () {
   }
 
   function showDetails(pokemon) {
-    console.log(pokemon);
+    loadDetails(pokemon).then(function () {
+      console.log(pokemon);
+    });
   }
 
   function buttonEventListener(button, pokemon) {
