@@ -95,7 +95,6 @@ let pokemonRepository = (function () {
 
     let contentElementImg = $("<img style='width:50%'>");
     contentElementImg.attr("src", pokemon.imageUrl);
-
     let contentElementHeight = $("<p>" + "height: " + pokemon.height + "</p>");
 
     modalTitle.append(titleElement);
