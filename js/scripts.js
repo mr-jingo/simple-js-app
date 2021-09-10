@@ -94,7 +94,6 @@ let pokemonRepository = (function () {
     let titleElement = $("<h1>" + pokemon.name + "</h1>");
 
     let contentElementImg = $("<img style='width:50%'>");
-    contentElementImg.attr("src", pokemon.imageUrl);
     contentElementImg.attr({src: pokemon.imageUrl,
     alt: "ingame sprite of " + pokemon.name});
 
